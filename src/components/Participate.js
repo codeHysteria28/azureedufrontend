@@ -17,23 +17,23 @@ const Participate = () => {
                         <Col sm>
                             <Form.Group className="mb-3" controlId="formBasicName">
                                 <Form.Label>Name</Form.Label>
-                                <Form.Control type="text" placeholder="Your name" />
+                                <Form.Control type="text" placeholder="Your name" required/>
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                 <Form.Label>Email address</Form.Label>
-                                <Form.Control type="email" placeholder="Your email" />
+                                <Form.Control type="email" placeholder="Your email" required/>
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="formBasicTopic">
                                 <Form.Label>Topic</Form.Label>
-                                <Form.Control type="text" placeholder="Your topic" />
+                                <Form.Control type="text" placeholder="Your topic" required/>
                             </Form.Group>
                         </Col>
                         <Col sm>
                             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                                 <Form.Label>Message</Form.Label>
-                                <Form.Control as="textarea" rows={5} />
+                                <Form.Control as="textarea" rows={5} required/>
                             </Form.Group>
 
                             <Button variant="primary" type="submit" className="mt-4">

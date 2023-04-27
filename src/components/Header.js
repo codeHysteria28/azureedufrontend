@@ -5,13 +5,14 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 // import NavDropdown from 'react-bootstrap/NavDropdown';
 import { BsFillPersonFill, BsFillCameraReelsFill, BsFillHouseDoorFill, BsFillSignpostSplitFill } from "react-icons/bs";
+import { VscAzure } from "react-icons/vsc";
 
 
 const Header = () => {
     return (
         <Navbar expand="md" id="header-navbar">
             <Container>
-                <h1><Navbar.Brand href="#home" className="brand">Azure Education</Navbar.Brand></h1>
+                <h1><Navbar.Brand href="#home" className="brand"><VscAzure/>zure Education</Navbar.Brand></h1>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
                     <Nav>
