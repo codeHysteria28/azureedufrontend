@@ -1,11 +1,12 @@
-import logo from './logo.svg';
 import './App.css';
+import Container from 'react-bootstrap/Container';
+import Header from './components/Header';
 
 function App() {
   return (
-    <div className="App">
-      Testing
-    </div>
+    <Container fluid id='main-wrapper'>
+      <Header />
+    </Container>
   );
 }
 
