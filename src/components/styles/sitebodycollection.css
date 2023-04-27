@@ -1,0 +1,28 @@
+#body-wrapper {
+    margin-top: 4rem;
+}
+
+.content-h2-heading {
+  margin-bottom: 4.7rem;  
+}
+
+.content-h2-heading, .participate-h3 {
+    color: #0A95FF;
+}
+
+div.content-row .col-sm {
+    border: 1px solid #0A95FF;
+}
+
+.col-sm:not(.standard-col) {
+    border: none !important;
+}
+
+div.participate-container {
+    padding: 2.5rem;
+    border: 1px solid #0A95FF;
+}
+
+h3.participate-h3 {
+   margin-bottom: 2rem;
+}
