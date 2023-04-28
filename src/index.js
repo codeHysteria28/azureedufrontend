@@ -1,13 +1,37 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter, Route, Routes} from 'react-router-dom';
 import './index.css';
 import App from './App';
+import Header from './components/Header';
+import Admin from './components/Routes/Admin';
+import AdminLogin from './components/Routes/AdminLogin';
+import Guides from './components/Routes/Guides';
+import Sessions from './components/Routes/Sessions';
+import SignIn from './components/Routes/SignIn';
 import reportWebVitals from './reportWebVitals';
+
+export default function Index() {
+  return(
+    <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Header />}>
+            <Route path="/" element={<App />} />
+            <Route path="/guides" element={<Guides />} />
+            <Route path="/sessions" element={<Sessions />} />
+            {/* <Route path="/signin" element={<SignIn />} /> */}
+            {/* <Route path="/admin" element={<Admin />} /> */}
+            <Route path="/adminlogin" element={<AdminLogin />} />
+          </Route>
+        </Routes>
+    </BrowserRouter>
+  );
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Index />
   </React.StrictMode>
 );
 
