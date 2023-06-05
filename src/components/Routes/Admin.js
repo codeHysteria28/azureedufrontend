@@ -4,9 +4,15 @@ import axios from "axios";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import Form from 'react-bootstrap/Form';
+import Row from "react-bootstrap/Row";
+import Col from 'react-bootstrap/Col';
 import { VscAzure } from "react-icons/vsc";
 import { useIdleTimer } from 'react-idle-timer'
 import ReactQuill from 'react-quill';
+import { IoIosLogOut } from "react-icons/io";
 
 import 'react-quill/dist/quill.snow.css';
 import '../styles/admin.css'
@@ -16,8 +22,30 @@ const Admin = () => {
     const [idle, setIdle] = useState(false); 
     const [username, setUsername] = useState("");
     const [value, setValue] = useState('');
+    const [title, setTitle] = useState('');
+    const [topic, setTopic] = useState('');
+    const [description, setDescription] = useState('');
+    const [show, setShow] = useState(false);
 
     const navigate = useNavigate();
+
+    const modules = {
+        toolbar: [
+          [{ 'header': [1, 2, false] }],
+          ['bold', 'italic', 'underline','strike', 'blockquote'],
+          [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
+          ['link', 'image' , 'code'], // 'image' to be added later
+          ['clean']
+        ],
+    };
+
+    const articleData = {
+        'title': title,
+        'content': value,
+        'author': username,
+        'description': description,
+        'topic': topic
+    }
 
     const getUser = () => {
         axios({
@@ -72,27 +100,12 @@ const Admin = () => {
         });
     }
 
-    const modules = {
-        toolbar: [
-          [{ 'header': [1, 2, false] }],
-          ['bold', 'italic', 'underline','strike', 'blockquote'],
-          [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
-          ['link', 'image', 'code'],
-          ['clean']
-        ],
-    };
-
     // upload artciles to server
     const uploadArticle = () => {
         axios({
             method: 'post',
             url: 'http://localhost:80/uploadNews',
-            data: {
-                title: "test",
-                content: value,
-                author: "test",
-                topic: "test"
-            },
+            data: articleData,
             withCredentials: true
         }).then(res => {
             if(res.data === 'article uploaded'){
@@ -102,6 +115,17 @@ const Admin = () => {
             }
         });
     }
+
+    const handleClose = () => {
+        if(title !== '' && topic !== '' && value !== ''){
+            uploadArticle();
+            setShow(false);
+        }else {
+            setShow(false);
+        }
+    };
+
+    const handleShow = () => setShow(true);
 
     useEffect(() => {
         getUser();
@@ -120,17 +144,55 @@ const Admin = () => {
                                 <Nav>
                                     <a className="header_paragraph">
                                         {idle ? <span className="away_status"></span> : <span className="online_status"></span>}
-                                        Logged in: {username}
+                                        Logged in: <span style={{fontWeight:"bold"}}>{username}</span> | <IoIosLogOut className="logout_icon" onClick={logout}/>
                                     </a>
                                 </Nav>
                             </Navbar.Collapse>
                         </Container>
                 </Navbar>
 
-                <Container fluid >
+                <Container>
+                    <h2 className="admin_heading">Create New Article</h2>
                     <ReactQuill className="editor" theme="snow" value={value} onChange={setValue} modules={modules}/>
-                    {/* <button onClick={logout}>Logout</button> */}
-                    <button onClick={uploadArticle}>Upload</button>
+                    <Button className="mt-3" onClick={handleShow}>Upload</Button>
+
+                    <Modal show={show} onHide={handleClose}>
+                        <Modal.Header closeButton>
+                            <Modal.Title>Add details about your article</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <Form>
+                                <Row className="content-row">
+                                    <Col sm>
+                                        <Form.Group className="mb-3" controlId="formBasicName">
+                                            <Form.Label>Title of the Article</Form.Label>
+                                            <Form.Control type="text" placeholder="Title ..." required name="title" onChange={e => setTitle(e.target.value)}/>
+                                        </Form.Group>
+                                    </Col>
+                                    <Col sm>
+                                        <Form.Group className="mb-3" controlId="formBasicTopic">
+                                            <Form.Label>Topic</Form.Label>
+                                            <Form.Control type="text" placeholder="Topic of the article" required name="topic" onChange={e => setTopic(e.target.value)}/>
+                                        </Form.Group>
+                                    </Col>
+                                </Row>
+                                <Col sm>
+                                    <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                                        <Form.Label>Short description</Form.Label>
+                                        <Form.Control as="textarea" rows={5} required onChange={e => setDescription(e.target.value)}/>
+                                    </Form.Group>
+                                </Col>
+                            </Form>
+                        </Modal.Body>
+                        <Modal.Footer className="article_modal_footer">
+                            <Button variant="secondary" onClick={handleClose}>
+                                Close
+                            </Button>
+                            <Button variant="primary" onClick={handleClose}>
+                                Save Changes & Upload
+                            </Button>
+                        </Modal.Footer>
+                    </Modal>
                 </Container>
             </>
             : ""

@@ -65,3 +65,22 @@
 .editor {
     margin-top: 2rem;
 }
+
+h2.admin_heading {
+    margin-top: 2rem;
+}
+
+.logout_icon {
+    color: white;
+    font-size: 1.2rem;
+    margin-right: 1rem;
+}
+
+.logout_icon:hover {
+   cursor: pointer;
+   color: lightcoral;
+}
+
+.article_modal_footer {
+    justify-content: unset !important;
+}
