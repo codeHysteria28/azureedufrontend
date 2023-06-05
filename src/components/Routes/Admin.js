@@ -72,6 +72,37 @@ const Admin = () => {
         });
     }
 
+    const modules = {
+        toolbar: [
+          [{ 'header': [1, 2, false] }],
+          ['bold', 'italic', 'underline','strike', 'blockquote'],
+          [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
+          ['link', 'image', 'code'],
+          ['clean']
+        ],
+    };
+
+    // upload artciles to server
+    const uploadArticle = () => {
+        axios({
+            method: 'post',
+            url: 'http://localhost:80/uploadNews',
+            data: {
+                title: "test",
+                content: value,
+                author: "test",
+                topic: "test"
+            },
+            withCredentials: true
+        }).then(res => {
+            if(res.data === 'article uploaded'){
+                setValue('');
+                alert('article uploaded');
+                console.log(res.data);
+            }
+        });
+    }
+
     useEffect(() => {
         getUser();
     }, []);
@@ -97,9 +128,9 @@ const Admin = () => {
                 </Navbar>
 
                 <Container fluid >
-                    <ReactQuill theme="snow" value={value} onChange={setValue} />
+                    <ReactQuill className="editor" theme="snow" value={value} onChange={setValue} modules={modules}/>
                     {/* <button onClick={logout}>Logout</button> */}
-                    
+                    <button onClick={uploadArticle}>Upload</button>
                 </Container>
             </>
             : ""

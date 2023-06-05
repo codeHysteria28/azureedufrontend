@@ -61,3 +61,7 @@
         box-shadow: 0 0 0 0 rgba(0, 255, 0, 0);
     }
 }
+
+.editor {
+    margin-top: 2rem;
+}
