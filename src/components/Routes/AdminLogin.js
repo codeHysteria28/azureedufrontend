@@ -18,7 +18,7 @@ const AdminLogin = () => {
 
         axios({
             method: 'post',
-            url: 'http://localhost:1337/adminLogin',
+            url: 'http://localhost:80/adminLogin',
             data: {
                 username: username,
                 password: password
@@ -53,7 +53,7 @@ const AdminLogin = () => {
                     </Col>
                 </Row>
                 <Button variant="primary" type="submit" className="mt-4">
-                    Submit Request
+                    Login
                 </Button>
             </Form>
         </Container>
