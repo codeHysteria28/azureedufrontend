@@ -43,7 +43,7 @@ const AdminRegistration = () => {
 
         // check if passwords match
         if(passwordMatch) {
-            axios.post("http://localhost:80/adminReg", data)
+            axios.post("https://azureedube1.azurewebsites.net/adminReg", data)
             .then((res) => {
                 navigate("/adminlogin");
                 e.target.reset();
