@@ -11,6 +11,7 @@ import Guides from './components/Routes/Guides';
 import Sessions from './components/Routes/Sessions';
 import SignIn from './components/Routes/SignIn';
 import reportWebVitals from './reportWebVitals';
+import SingleArticle from './components/SingleArticle';
 
 export default function Index() {
   return(
@@ -25,6 +26,7 @@ export default function Index() {
           <Route path="/admin" element={<Admin />} />
           <Route path="/adminlogin" element={<AdminLogin />} />
           <Route path="/adminreg" element={<AdminRegistration />} />
+          <Route path="/article/:title" element={<SingleArticle />}/>
         </Routes>
     </BrowserRouter>
   );

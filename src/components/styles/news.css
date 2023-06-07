@@ -1,0 +1,26 @@
+.content-link-single-article {
+    display: block;
+    text-decoration: none;
+}
+
+.news {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+p img {
+    width: 35%;
+    height: auto;
+}
+
+a.go-back-btn {
+    color: #0A95FF;
+    text-decoration: none !important;
+}
+
+a.go-back-btn:hover {
+    cursor: pointer;
+    color: #002A47;
+    font-weight: bold;
+    transition: all .2s ease;
+}
