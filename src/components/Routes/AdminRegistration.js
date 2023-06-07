@@ -43,7 +43,7 @@ const AdminRegistration = () => {
 
         // check if passwords match
         if(passwordMatch) {
-            axios.post("http://localhost:1337/adminReg", data)
+            axios.post("http://localhost:80/adminReg", data)
             .then((res) => {
                 navigate("/adminlogin");
                 e.target.reset();
@@ -96,7 +96,7 @@ const AdminRegistration = () => {
                             }
                         </Form.Group>
                         <Button variant="primary" type="submit" className="submit_admin_btn">
-                            Submit Request
+                            Register
                         </Button>
                     </Col>
                 </Row>
