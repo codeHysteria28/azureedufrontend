@@ -5,10 +5,17 @@ import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Button from 'react-bootstrap/Button';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
+import moment from "moment";
+
 import './styles/news.css';
 
 const News = () => {
     const [news, setNews] = useState([]);
+
+    const now = moment().format("MMM Do YY");
 
     const getNews = () => {
         axios({
@@ -16,7 +23,7 @@ const News = () => {
             url: 'http://localhost:80/getNews',
             withCredentials: true
         }).then(res => {
-            console.log(res.data);
+            // console.log(res.data);
             setNews(res.data);
         });
     }
@@ -38,7 +45,28 @@ const News = () => {
                                         <div className="news-card">
                                             <h3 className="news-card-heading">{item.title}</h3>
                                             <p>{item.description}</p>
-                                            <small>{item.author} / {item.topic}</small>
+                                            <small>{item.author} / {item.topic} / </small> 
+                                            {
+                                                now === moment(item.createdAt).format("MMM Do YY") ? 
+                                                <OverlayTrigger key="right" placement="right"
+                                                overlay={
+                                                    <Tooltip className="tooltip-new-badge">
+                                                        {moment(item.createdAt).format("MMM Do YY")}
+                                                    </Tooltip>
+                                                }
+                                                >
+                                                    <small className="newBadge">NEW</small>
+                                                </OverlayTrigger> :
+                                                <OverlayTrigger key="right" placement="right"
+                                                overlay={
+                                                    <Tooltip className="tooltip-old-badge">
+                                                        {moment(item.createdAt).format("MMM Do YY")}
+                                                    </Tooltip>
+                                                }
+                                                >
+                                                    <small className="oldBadge">OLDER</small>
+                                                </OverlayTrigger> 
+                                            }
                                             <Link to={`/article/${item.title}`} className="content-link-single-article">Read More</Link>
                                         </div>
                                     </Col>
@@ -49,7 +77,9 @@ const News = () => {
                         })
                     }
                 </Row>
-                <a href="/news" className="content-link" style={{marginLeft: "-12px"}}>All News</a>
+                <Link to="/news" className="content-link" style={{marginLeft: "-12px"}}>
+                    <Button variant="primary" className="content-btn mt-5">View all news</Button>
+                </Link>
             </Container>
         </div>
     );
