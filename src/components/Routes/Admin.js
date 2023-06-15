@@ -54,7 +54,7 @@ const Admin = () => {
     const getUser = () => {
         axios({
             method: 'post',
-            url: 'https://azureedube1.azurewebsites.net/admin',
+            url: 'http://localhost:80/admin',
             withCredentials: true
         }).then(res => {
             if(res.data === 'not authenticated'){
@@ -94,7 +94,7 @@ const Admin = () => {
     const logout = () => {
         axios({
             method: 'post',
-            url: 'https://azureedube1.azurewebsites.net/logout',
+            url: 'http://localhost:80/logout',
             withCredentials: true
         }).then(res => {
             if(res.data === 'logged out'){
@@ -108,7 +108,7 @@ const Admin = () => {
     const uploadArticle = () => {
         axios({
             method: 'post',
-            url: 'https://azureedube1.azurewebsites.net/uploadNews',
+            url: 'http://localhost:80/uploadNews',
             data: articleData,
             withCredentials: true
         }).then(res => {
