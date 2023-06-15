@@ -16,7 +16,7 @@ const News = () => {
             url: 'http://localhost:80/getNews',
             withCredentials: true
         }).then(res => {
-            // console.log(res.data);
+            console.log(res.data);
             setNews(res.data);
         });
     }
@@ -32,16 +32,20 @@ const News = () => {
                 <Row className="content-row">
                     {
                         news.map((item, index) => {
-                            return (
-                                <Col sm className="standard-col news" key={index}>
-                                    <div className="news-card">
-                                        <h3 className="news-card-heading">{item.title}</h3>
-                                        <p>{item.description}</p>
-                                        <small>{item.author} / {item.topic}</small>
-                                        <Link to={`/article/${item.title}`} className="content-link-single-article">Read More</Link>
-                                    </div>
-                                </Col>
-                            );
+                            if(item.approved === true){
+                                return (
+                                    <Col sm className="standard-col news" key={index}>
+                                        <div className="news-card">
+                                            <h3 className="news-card-heading">{item.title}</h3>
+                                            <p>{item.description}</p>
+                                            <small>{item.author} / {item.topic}</small>
+                                            <Link to={`/article/${item.title}`} className="content-link-single-article">Read More</Link>
+                                        </div>
+                                    </Col>
+                                );
+                            }else {
+                                return
+                            }
                         })
                     }
                 </Row>
