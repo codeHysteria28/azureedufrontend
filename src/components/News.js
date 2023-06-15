@@ -13,7 +13,7 @@ const News = () => {
     const getNews = () => {
         axios({
             method: 'get',
-            url: 'http://localhost:80/getNews',
+            url: 'https://azureedube1.azurewebsites.net/getNews',
             withCredentials: true
         }).then(res => {
             // console.log(res.data);
