@@ -18,7 +18,7 @@ const AdminLogin = () => {
 
         axios({
             method: 'post',
-            url: 'https://azureedube1.azurewebsites.net/adminLogin',
+            url: 'http://localhost:80/adminLogin',
             data: {
                 username: username,
                 password: password

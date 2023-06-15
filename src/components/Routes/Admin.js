@@ -11,8 +11,10 @@ import Row from "react-bootstrap/Row";
 import Col from 'react-bootstrap/Col';
 import { VscAzure } from "react-icons/vsc";
 import { useIdleTimer } from 'react-idle-timer'
-import ReactQuill from 'react-quill';
 import { IoIosLogOut } from "react-icons/io";
+import Accordion from 'react-bootstrap/Accordion';
+import ReactQuill from 'react-quill';
+import AdministerArticlesTable from "../ArticleManagement/AdministerArticlesTable";
 
 import 'react-quill/dist/quill.snow.css';
 import '../styles/admin.css'
@@ -26,8 +28,18 @@ const Admin = () => {
     const [topic, setTopic] = useState('');
     const [description, setDescription] = useState('');
     const [show, setShow] = useState(false);
+    const [uploaded, setUploaded] = useState(false);
 
     const navigate = useNavigate();
+
+    const articleData = {
+        'title': title,
+        'content': value,
+        'author': username,
+        'description': description,
+        'topic': topic,
+        'approved': false
+    }
 
     const modules = {
         toolbar: [
@@ -39,18 +51,10 @@ const Admin = () => {
         ],
     };
 
-    const articleData = {
-        'title': title,
-        'content': value,
-        'author': username,
-        'description': description,
-        'topic': topic
-    }
-
     const getUser = () => {
         axios({
             method: 'post',
-            url: 'https://azureedube1.azurewebsites.net/admin',
+            url: 'http://localhost:80/admin',
             withCredentials: true
         }).then(res => {
             if(res.data === 'not authenticated'){
@@ -90,7 +94,7 @@ const Admin = () => {
     const logout = () => {
         axios({
             method: 'post',
-            url: 'https://azureedube1.azurewebsites.net/logout',
+            url: 'http://localhost:80/logout',
             withCredentials: true
         }).then(res => {
             if(res.data === 'logged out'){
@@ -104,14 +108,14 @@ const Admin = () => {
     const uploadArticle = () => {
         axios({
             method: 'post',
-            url: 'https://azureedube1.azurewebsites.net/uploadNews',
+            url: 'http://localhost:80/uploadNews',
             data: articleData,
             withCredentials: true
         }).then(res => {
             if(res.data === 'article uploaded'){
                 setValue('');
                 alert('article uploaded');
-                console.log(res.data);
+                // console.log(res.data);
             }
         });
     }
@@ -152,9 +156,21 @@ const Admin = () => {
                 </Navbar>
 
                 <Container>
-                    <h2 className="admin_heading">Create New Article</h2>
-                    <ReactQuill className="editor" theme="snow" value={value} onChange={setValue} modules={modules}/>
-                    <Button className="mt-3" onClick={handleShow}>Upload</Button>
+                    <Accordion className="mt-5">
+                        <Accordion.Item eventKey="0">
+                            <Accordion.Header>Create new article</Accordion.Header>
+                            <Accordion.Body>
+                                <ReactQuill className="editor" theme="snow" value={value} onChange={setValue} modules={modules}/>
+                                <Button className="mt-3" onClick={handleShow}>Upload</Button>
+                            </Accordion.Body>
+                        </Accordion.Item>
+                        <Accordion.Item eventKey="1">
+                            <Accordion.Header>Approve Articles</Accordion.Header>
+                            <Accordion.Body>
+                                <AdministerArticlesTable uploaded={uploaded}/>
+                            </Accordion.Body>
+                        </Accordion.Item>
+                    </Accordion>
 
                     <Modal show={show} onHide={handleClose}>
                         <Modal.Header closeButton>

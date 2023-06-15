@@ -84,3 +84,23 @@ h2.admin_heading {
 .article_modal_footer {
     justify-content: unset !important;
 }
+
+.edit-article {
+    color: orange;
+}
+
+.delete-article {
+    color: red;
+}
+
+.edit-article:hover, .delete-article:hover, .approve-article:hover {
+    cursor: pointer;
+}
+
+.edit-article:hover {
+    color: darkorange;
+}
+
+.delete-article:hover {
+    color: darkred;
+}
