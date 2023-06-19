@@ -13,7 +13,7 @@ const AdministerArticlesTable = () => {
     const getNews = () => {
         axios({
             method: 'get',
-            url: 'http://localhost:80/getNewsAdmin',
+            url: 'https://azureedube1.azurewebsites.net/getNewsAdmin',
             withCredentials: true
         }).then(res => {
             setNews(res.data);
@@ -31,7 +31,7 @@ const AdministerArticlesTable = () => {
     const approveArticle = articleTitle => {
         axios({
             method: 'post',
-            url: 'http://localhost:80/approveArticle',
+            url: 'https://azureedube1.azurewebsites.net/approveArticle',
             data: {articleTitle},
             withCredentials: true
         }).then(res => {
