@@ -1,9 +1,14 @@
 .content-link-single-article {
     display: block;
     text-decoration: none;
+    margin-top: 1rem;
 }
 
 .news {
+    padding: 1rem;
+}
+
+.news:nth-child(even){
     margin-left: 10px;
     margin-right: 10px;
 }
@@ -23,4 +28,28 @@ a.go-back-btn:hover {
     color: #002A47;
     font-weight: bold;
     transition: all .2s ease;
+}
+
+.newBadge, .oldBadge {
+    font-size: 0.8rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+}
+
+.newBadge {
+    background-color: #0078d4;
+}
+
+.newBadge:hover {
+    background-color: #005a9e;
+}
+
+.oldBadge {
+    background-color: orange;
+}
+
+.oldBadge:hover {
+    background-color: darkorange;
 }
