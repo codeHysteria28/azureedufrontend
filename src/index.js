@@ -13,6 +13,7 @@ import SignIn from './components/Routes/SignIn';
 import SignUp from './components/Routes/SignUp';
 import reportWebVitals from './reportWebVitals';
 import SingleArticle from './components/SingleArticle';
+import Creator from './components/Routes/Creator';
 
 export default function Index() {
   return(
@@ -29,6 +30,7 @@ export default function Index() {
           <Route path="/adminlogin" element={<AdminLogin />} />
           <Route path="/adminreg" element={<AdminRegistration />} />
           <Route path="/article/:title" element={<SingleArticle />}/>
+          <Route path="/creator" element={<Creator />} />
         </Routes>
     </BrowserRouter>
   );

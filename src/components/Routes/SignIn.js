@@ -18,7 +18,7 @@ const SignIn = () => {
 
         axios({
             method: 'post',
-            url: 'http://localhost:80/signIn',
+            url: 'http://localhost:80/signin',
             data: {
                 email: email,
                 password: password

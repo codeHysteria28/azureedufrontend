@@ -45,7 +45,7 @@ const SignUp = () => {
         if(passwordMatch) {
             axios.post("http://localhost:80/signup", data)
             .then((res) => {
-                navigate("/adminlogin");
+                navigate("/signin");
                 e.target.reset();
             })
             .catch((err) => {
