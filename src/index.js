@@ -10,6 +10,7 @@ import AdminRegistration from './components/Routes/AdminRegistration';
 import News from './components/Routes/News';
 import Sessions from './components/Routes/Sessions';
 import SignIn from './components/Routes/SignIn';
+import SignUp from './components/Routes/SignUp';
 import reportWebVitals from './reportWebVitals';
 import SingleArticle from './components/SingleArticle';
 
@@ -19,9 +20,10 @@ export default function Index() {
         <Routes>
           <Route path="/" element={<Header />}>
             <Route path="/" element={<App />} />
-            <Route path="/guides" element={<News />} />
+            <Route path="/news" element={<News />} />
             {/* <Route path="/sessions" element={<Sessions />} /> */}
-            {/* <Route path="/signin" element={<SignIn />} /> */}
+            <Route path="/signin" element={<SignIn />} />
+            <Route path="/signup" element={<SignUp />} />
           </Route>
           <Route path="/admin" element={<Admin />} />
           <Route path="/adminlogin" element={<AdminLogin />} />

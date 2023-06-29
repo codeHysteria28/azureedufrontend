@@ -19,7 +19,7 @@ const Header = () => {
                         <Nav>
                             <Link className="nav-link" to="/"><BsFillHouseDoorFill/> Home</Link>
                             {/* <Link className="nav-link" to="/sessions"><BsFillCameraReelsFill/> Sessions</Link> */}
-                            <Link className="nav-link" to="/guides"><BsFillSignpostSplitFill/> News</Link>
+                            <Link className="nav-link" to="/news"><BsFillSignpostSplitFill/> News</Link>
                             <Link className="nav-link" to="/signin"><BsFillPersonFill/> Login</Link>
                         </Nav>
                     </Navbar.Collapse>
