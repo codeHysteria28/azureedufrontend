@@ -9,7 +9,7 @@ const SiteBodyCollection = () => {
     return (
         <Container id="body-wrapper">
             <News/>
-            <LastRecordings/>
+            {/* <LastRecordings/> */}
             <Participate/>
         </Container>
     );

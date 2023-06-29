@@ -13,13 +13,13 @@ const Header = () => {
         <>
             <Navbar expand="md" id="header-navbar">
                 <Container>
-                    <h1><Navbar.Brand href="#home" className="brand"><VscAzure/>zure Education</Navbar.Brand></h1>
+                    <h1><Navbar.Brand href="/" className="brand"><VscAzure/>zure Education</Navbar.Brand></h1>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
                         <Nav>
                             <Link className="nav-link" to="/"><BsFillHouseDoorFill/> Home</Link>
-                            <Link className="nav-link" to="/sessions"><BsFillCameraReelsFill/> Sessions</Link>
-                            <Link className="nav-link" to="/guides"><BsFillSignpostSplitFill/> Guides</Link>
+                            {/* <Link className="nav-link" to="/sessions"><BsFillCameraReelsFill/> Sessions</Link> */}
+                            <Link className="nav-link" to="/news"><BsFillSignpostSplitFill/> News</Link>
                             <Link className="nav-link" to="/signin"><BsFillPersonFill/> Login</Link>
                         </Nav>
                     </Navbar.Collapse>

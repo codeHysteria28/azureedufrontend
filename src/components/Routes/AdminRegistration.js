@@ -80,7 +80,7 @@ const AdminRegistration = () => {
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Email</Form.Label>
-                            <Form.Control type="text" placeholder="Email" required name="email" onChange={e => setEmail(e.target.value)}/>
+                            <Form.Control type="mail" placeholder="Email" required name="email" onChange={e => setEmail(e.target.value)}/>
                         </Form.Group>
                     </Col>
                     <Col sm>

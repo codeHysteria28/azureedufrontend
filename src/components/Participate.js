@@ -41,7 +41,7 @@ const Participate = () => {
         <div>
             <h2 className="content-h2-heading">Participate</h2>
             <Container className="participate-container mb-5">
-                <h3 className="participate-h3 text-center">Want to run a live session or add your recording ?</h3>
+                <h3 className="participate-h3 text-center">Would you like to contribute ?</h3>
                 <Form onSubmit={handleSubmit}>
                     <Row className="content-row">
                         <Col sm>

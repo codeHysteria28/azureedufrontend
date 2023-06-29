@@ -42,9 +42,9 @@ const News = () => {
                             if(item.approved === true){
                                 return (
                                     <Col sm className="standard-col news" key={index}>
-                                        <div className="news-card">
-                                            <h3 className="news-card-heading">{item.title}</h3>
-                                            <p>{item.description}</p>
+                                        <h3 className="news-card-heading">{item.title}</h3>
+                                        <p>{item.description}</p>
+                                        <div className="article-item-details">
                                             <small>{item.author} / {item.topic} / </small> 
                                             {
                                                 now === moment(item.createdAt).format("MMM Do YY") ? 
