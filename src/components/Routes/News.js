@@ -1,12 +1,12 @@
 import React from "react";
 import Container from 'react-bootstrap/Container';
 
-const Guides = () => {
+const News = () => {
     return (
         <Container>
-            <h1>Guides</h1>
+            <h1>News</h1>
         </Container>
     );
 };
 
-export default Guides;
+export default News;

@@ -7,7 +7,7 @@ import Header from './components/Header';
 import Admin from './components/Routes/Admin';
 import AdminLogin from './components/Routes/AdminLogin';
 import AdminRegistration from './components/Routes/AdminRegistration';
-import Guides from './components/Routes/Guides';
+import News from './components/Routes/News';
 import Sessions from './components/Routes/Sessions';
 import SignIn from './components/Routes/SignIn';
 import reportWebVitals from './reportWebVitals';
@@ -19,8 +19,8 @@ export default function Index() {
         <Routes>
           <Route path="/" element={<Header />}>
             <Route path="/" element={<App />} />
-            <Route path="/guides" element={<Guides />} />
-            <Route path="/sessions" element={<Sessions />} />
+            <Route path="/guides" element={<News />} />
+            {/* <Route path="/sessions" element={<Sessions />} /> */}
             {/* <Route path="/signin" element={<SignIn />} /> */}
           </Route>
           <Route path="/admin" element={<Admin />} />
