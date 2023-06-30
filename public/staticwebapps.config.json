@@ -1,4 +1,41 @@
 {
+  "networking": {
+    "allowedIpRanges": ["AzureFrontDoor.Backend"]
+  },
+  "forwardingGateway": {
+    "requiredHeaders": {
+      "X-Azure-FDID" : "52fb27ff-2896-4274-a134-0755e8dd8e8d"
+    },
+    "allowedForwardedHosts": [
+      "azureedu-ffbgbeb9h3ddgffx.z01.azurefd.net"
+    ]
+  },
+  "routes": [
+    {
+      "route": "/admin",
+      "headers": {
+          "Cache-Control": "no-store"
+      }
+    },
+    {
+      "route": "/creator",
+      "headers": {
+          "Cache-Control": "no-store"
+      }
+    },
+    {
+      "route": "/signin",
+      "headers": {
+          "Cache-Control": "no-store"
+      }
+    },
+    {
+      "route": "/signup",
+      "headers": {
+          "Cache-Control": "no-store"
+      }
+    }
+  ],
   "navigationFallback": {
      "rewrite": "index.html",
      "exclude": ["/static/media/*.{png,jpg,jpeg,gif,bmp}",   "/static/css/*"]

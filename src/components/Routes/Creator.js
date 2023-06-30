@@ -26,7 +26,7 @@ const Creator = () => {
     const logout = () => {
         axios({
             method: 'post',
-            url: 'http://localhost:80/logout',
+            url: 'http://localhost:80/userlogout',
             withCredentials: true
         }).then(res => {
             if(res.data === 'logged out'){
@@ -45,6 +45,7 @@ const Creator = () => {
             {auth ?
                 <>
                     <h1>Creator {email}</h1>
+                    <button onClick={logout}>Logout</button>
                 </>
                 : ""
             }
