@@ -11,7 +11,7 @@ const Creator = () => {
     const getUser = () => {
         axios({
             method: 'post',
-            url: 'http://localhost:80/usercreator',
+            url: 'https://azureedube1.azurewebsites.net/usercreator',
             withCredentials: true
         }).then(res => {
             if(res.data === 'not authenticated'){
@@ -26,7 +26,7 @@ const Creator = () => {
     const logout = () => {
         axios({
             method: 'post',
-            url: 'http://localhost:80/userlogout',
+            url: 'https://azureedube1.azurewebsites.net/userlogout',
             withCredentials: true
         }).then(res => {
             if(res.data === 'logged out'){
