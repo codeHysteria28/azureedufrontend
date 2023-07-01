@@ -92,10 +92,14 @@ const Admin = () => {
     });
 
     const logout = () => {
+        const logoutType = 'admin';
         axios({
             method: 'post',
             url: 'http://localhost:80/logout',
-            withCredentials: true
+            withCredentials: true,
+            data: {
+                logoutType: logoutType
+            }
         }).then(res => {
             if(res.data === 'logged out'){
                 setAuth(false);

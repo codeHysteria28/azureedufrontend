@@ -21,7 +21,7 @@ import 'react-quill/dist/quill.snow.css';
 
 const Creator = () => {
     const [auth, setAuth] = useState(false);
-    const [email, setEmail] = useState("");
+    const [username, setUsername] = useState("");
     const [value, setValue] = useState('');
     const [title, setTitle] = useState('');
     const [topic, setTopic] = useState('');
@@ -35,7 +35,7 @@ const Creator = () => {
         'title': title,
         'content': value,
         'description': description,
-        'author': email,
+        'author': username,
         'topic': topic,
         'approved': false
     }
@@ -60,17 +60,21 @@ const Creator = () => {
                 navigate("/signin");
             }else {
                 setArticles(res.data.scrapedArticles);
-                setEmail(res.data.eMail);
+                setUsername(res.data.userName.username);
                 setAuth(true);
             }
         });
     }
 
     const logout = () => {
+        const logoutType = "user";
         axios({
             method: 'post',
-            url: 'http://localhost:80/userlogout',
-            withCredentials: true
+            url: 'http://localhost:80/logout',
+            withCredentials: true,
+            data: {
+                logoutType: logoutType
+            }
         }).then(res => {
             if(res.data === 'logged out'){
                 setAuth(false);
@@ -121,7 +125,7 @@ const Creator = () => {
                             <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
                                 <Nav>
                                     <a className="header_paragraph">
-                                        Logged in: <span style={{fontWeight:"bold"}}>{email}</span> | <IoIosLogOut className="logout_icon" onClick={logout}/>
+                                        Logged in: <span style={{fontWeight:"bold"}}>{username}</span> | <IoIosLogOut className="logout_icon" onClick={logout}/>
                                     </a>
                                 </Nav>
                             </Navbar.Collapse>
@@ -153,6 +157,7 @@ const Creator = () => {
                                         </thead>
                                         <tbody>
                                             {
+                                                articles ? 
                                                 articles.map((item, index) => {
                                                     return (
                                                         <tr key={index}>
@@ -163,7 +168,7 @@ const Creator = () => {
                                                             <td>{ item.approved === true ? <FcCheckmark/> : <FcCancel/>}</td>
                                                         </tr>
                                                     );
-                                                })
+                                                }) : null
                                             }
                                         </tbody>
                                     </Table>
