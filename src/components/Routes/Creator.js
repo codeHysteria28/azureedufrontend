@@ -67,10 +67,14 @@ const Creator = () => {
     }
 
     const logout = () => {
+        const logoutType = 'user';
         axios({
             method: 'post',
             url: 'https://azureedube1.azurewebsites.net/userlogout',
-            withCredentials: true
+            withCredentials: true,
+            data: {
+                logoutType: logoutType
+            }
         }).then(res => {
             if(res.data === 'logged out'){
                 setAuth(false);

@@ -92,10 +92,14 @@ const Admin = () => {
     });
 
     const logout = () => {
+        const logoutType = 'admin';
         axios({
             method: 'post',
             url: 'https://azureedube1.azurewebsites.net/logout',
-            withCredentials: true
+            withCredentials: true,
+            data: {
+                logoutType: logoutType
+            }
         }).then(res => {
             if(res.data === 'logged out'){
                 setAuth(false);
