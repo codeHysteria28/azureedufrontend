@@ -83,7 +83,7 @@ const Creator = () => {
     const uploadArticle = () => {
         axios({
             method: 'post',
-            url: 'http://localhost:80/uploadNews',
+            url: 'https://azureedube1.azurewebsites.net/uploadNews',
             data: articleData,
             withCredentials: true
         }).then(res => {
