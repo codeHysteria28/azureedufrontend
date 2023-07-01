@@ -75,9 +75,6 @@ const Creator = () => {
             data: {
                 logoutType: logoutType
             },
-            data: {
-                logoutType: logoutType
-            }
         }).then(res => {
             if(res.data === 'logged out'){
                 setAuth(false);
