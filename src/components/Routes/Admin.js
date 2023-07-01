@@ -99,7 +99,7 @@ const Admin = () => {
             withCredentials: true,
             data: {
                 logoutType: logoutType
-            }
+            },
         }).then(res => {
             if(res.data === 'logged out'){
                 setAuth(false);

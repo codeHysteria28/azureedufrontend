@@ -34,9 +34,9 @@ const News = () => {
 
     return (
         <div className="mb-5">
-            <h2 className="content-h2-heading">News</h2>
+            <h2 className="content-h2-heading">Latest News</h2>
             <Container>
-                <Row className="content-row">
+                <div className="content-row">
                     {
                         news.map((item, index) => {
                             if(item.approved === true){
@@ -76,9 +76,10 @@ const News = () => {
                             }
                         })
                     }
-                </Row>
+                </div>
                 <Link to="/news" className="content-link" style={{marginLeft: "-12px"}}>
-                    <Button variant="primary" className="content-btn mt-5">View all news</Button>
+                    {/* TODO - remove disabled once a News component will be prepared  */}
+                    <Button disabled variant="primary" className="content-btn mt-5">View all news</Button>
                 </Link>
             </Container>
         </div>

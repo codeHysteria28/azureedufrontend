@@ -8,7 +8,7 @@ import Button from 'react-bootstrap/Button';
 import { useNavigate, Link } from "react-router-dom";
 
 const SignIn = () => {
-    const [email, setEmail] = useState("");
+    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
     const navigate = useNavigate();
@@ -20,7 +20,7 @@ const SignIn = () => {
             method: 'post',
             url: 'https://azureedube1.azurewebsites.net/signin',
             data: {
-                email: email,
+                username: username,
                 password: password
             },
             withCredentials: true
@@ -41,8 +41,8 @@ const SignIn = () => {
                 <Row className="content-row">
                     <Col sm>
                         <Form.Group className="mb-3" controlId="formBasicName">
-                            <Form.Label>E-mail</Form.Label>
-                            <Form.Control type="email" placeholder="E-mail" required name="email" onChange={e => setEmail(e.target.value)}/>
+                            <Form.Label>Username</Form.Label>
+                            <Form.Control type="text" placeholder="Username" required name="username" onChange={e => setUsername(e.target.value)}/>
                         </Form.Group>
                     </Col>
                     <Col sm>

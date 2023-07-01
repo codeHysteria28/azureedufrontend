@@ -6,11 +6,7 @@
 
 .news {
     padding: 1rem;
-}
-
-.news:nth-child(even){
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-top: 1rem;
 }
 
 p img {

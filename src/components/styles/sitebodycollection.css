@@ -11,7 +11,8 @@
 }
 
 div.content-row .col-sm {
-    border: 1px solid #0A95FF;
+    border: 1px solid #77c4ff;
+    border-radius: 10px;
 }
 
 .col-sm:not(.standard-col) {
