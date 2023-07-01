@@ -43,7 +43,7 @@ const SignUp = () => {
 
         // check if passwords match
         if(passwordMatch) {
-            axios.post("http://localhost:80/signup", data)
+            axios.post("https://azureedube1.azurewebsites.net/signup", data)
             .then((res) => {
                 navigate("/signin");
                 e.target.reset();

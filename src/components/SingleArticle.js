@@ -16,7 +16,7 @@ const SingleArticle = () => {
     const singleArticle = () => {
         axios({
             method: 'get',
-            url: `http://localhost:80/getArticle/${title}`,
+            url: `https://azureedube1.azurewebsites.net/getArticle/${title}`,
             withCredentials: true,
             params: { title }
         }).then(res => {

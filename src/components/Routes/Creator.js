@@ -53,7 +53,7 @@ const Creator = () => {
     const getUser = () => {
         axios({
             method: 'post',
-            url: 'http://localhost:80/usercreator',
+            url: 'https://azureedube1.azurewebsites.net/usercreator',
             withCredentials: true
         }).then(res => {
             if(res.data === 'not authenticated'){
@@ -67,11 +67,14 @@ const Creator = () => {
     }
 
     const logout = () => {
-        const logoutType = "user";
+        const logoutType = 'user';
         axios({
             method: 'post',
-            url: 'http://localhost:80/logout',
+            url: 'https://azureedube1.azurewebsites.net/logout',
             withCredentials: true,
+            data: {
+                logoutType: logoutType
+            },
             data: {
                 logoutType: logoutType
             }
@@ -87,7 +90,7 @@ const Creator = () => {
     const uploadArticle = () => {
         axios({
             method: 'post',
-            url: 'http://localhost:80/uploadNews',
+            url: 'https://azureedube1.azurewebsites.net/uploadNews',
             data: articleData,
             withCredentials: true
         }).then(res => {
