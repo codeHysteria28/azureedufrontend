@@ -23,7 +23,6 @@ const News = () => {
             url: 'https://azureedube1.azurewebsites.net/getNews',
             withCredentials: true
         }).then(res => {
-            // console.log(res.data);
             setNews(res.data);
         });
     }
@@ -77,9 +76,8 @@ const News = () => {
                         })
                     }
                 </div>
-                <Link to="/news" className="content-link" style={{marginLeft: "-12px"}}>
-                    {/* TODO - remove disabled once a News component will be prepared  */}
-                    <Button disabled variant="primary" className="content-btn mt-5">View all news</Button>
+                <Link to="/news" className="content-link">
+                    <Button variant="primary" className="content-btn mt-5">View all news</Button>
                 </Link>
             </Container>
         </div>

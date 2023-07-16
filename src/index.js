@@ -7,7 +7,7 @@ import Header from './components/Header';
 import Admin from './components/Routes/Admin';
 import AdminLogin from './components/Routes/AdminLogin';
 import AdminRegistration from './components/Routes/AdminRegistration';
-import News from './components/Routes/News';
+import AllNews from './components/Routes/AllNews';
 import Sessions from './components/Routes/Sessions';
 import SignIn from './components/Routes/SignIn';
 import SignUp from './components/Routes/SignUp';
@@ -21,7 +21,8 @@ export default function Index() {
         <Routes>
           <Route path="/" element={<Header />}>
             <Route path="/" element={<App />} />
-            <Route path="/news" element={<News />} />
+            <Route path="/news" element={<AllNews />} />
+            <Route path="/article/:title" element={<SingleArticle />}/>
             {/* <Route path="/sessions" element={<Sessions />} /> */}
             <Route path="/signin" element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />
@@ -29,7 +30,6 @@ export default function Index() {
           <Route path="/admin" element={<Admin />} />
           <Route path="/adminlogin" element={<AdminLogin />} />
           <Route path="/adminreg" element={<AdminRegistration />} />
-          <Route path="/article/:title" element={<SingleArticle />}/>
           <Route path="/creator" element={<Creator />} />
         </Routes>
     </BrowserRouter>

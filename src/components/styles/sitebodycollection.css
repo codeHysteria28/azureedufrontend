@@ -7,12 +7,19 @@
 }
 
 .content-h2-heading, .participate-h3 {
-    color: #0A95FF;
+    color: #002A47;
 }
 
 div.content-row .col-sm {
     border: 1px solid #77c4ff;
     border-radius: 10px;
+    transition: all .5s ease;
+}
+
+div.content-row .col-sm:hover {
+    border: 1px solid #0A95FF;
+    border-radius: 20px;
+    transition: all .5s ease;
 }
 
 .col-sm:not(.standard-col) {
@@ -21,7 +28,15 @@ div.content-row .col-sm {
 
 div.participate-container {
     padding: 2.5rem;
+    border: 1px solid #77c4ff;
+    border-radius: 10px;
+    transition: all .5s ease;
+}
+
+div.participate-container:hover {
     border: 1px solid #0A95FF;
+    transition: all .5s ease;
+    border-radius: 20px;
 }
 
 h3.participate-h3 {
