@@ -36,16 +36,27 @@ a.go-back-btn:hover {
 
 .newBadge {
     background-color: #0078d4;
+    transition: all .5s ease;
 }
 
 .newBadge:hover {
     background-color: #005a9e;
+    transition: all .5s ease;
 }
 
 .oldBadge {
     background-color: orange;
+    transition: all .5s ease;
 }
 
 .oldBadge:hover {
     background-color: darkorange;
+    transition: all .5s ease;
+}
+
+.spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
