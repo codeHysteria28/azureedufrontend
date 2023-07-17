@@ -7,7 +7,8 @@
       "X-Azure-FDID" : "52fb27ff-2896-4274-a134-0755e8dd8e8d"
     },
     "allowedForwardedHosts": [
-      "azureedu-ffbgbeb9h3ddgffx.z01.azurefd.net"
+      "azureedu-ffbgbeb9h3ddgffx.z01.azurefd.net",
+      "azure-edu.eu"
     ]
   },
   "routes": [
