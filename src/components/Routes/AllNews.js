@@ -1,13 +1,11 @@
 import React, {useState, useEffect} from "react";
 import Container from 'react-bootstrap/Container';
-import Row from "react-bootstrap/Row";
 import Col from 'react-bootstrap/Col';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 import axios from "axios";
 import moment from "moment";
 import { Link } from "react-router-dom";
-import Footer from "../Footer";
 import { ThreeCircles } from  'react-loader-spinner'
 import "../styles/news.css";
 import '../styles/sitebodycollection.css';
@@ -38,6 +36,7 @@ const News = () => {
             <h2 className="content-h2-heading">All News</h2>
             <div className="content-row">
                 {
+                    allNews.length < 1 ? <Col sm className="standard-col news text-center"><p className="font-weight-bold">No news yet ...</p></Col> :
                     allNews.map((item, index) => {
                         if(item.approved === true){
                             return (
@@ -78,7 +77,6 @@ const News = () => {
                 }
             </div>
         </Container>
-        <Footer />
         </>
     );
 };
