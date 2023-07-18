@@ -8,7 +8,7 @@ import Admin from './components/Routes/Admin';
 import AdminLogin from './components/Routes/AdminLogin';
 import AdminRegistration from './components/Routes/AdminRegistration';
 import AllNews from './components/Routes/AllNews';
-import Sessions from './components/Routes/Sessions';
+// import Sessions from './components/Routes/Sessions';
 import SignIn from './components/Routes/SignIn';
 import SignUp from './components/Routes/SignUp';
 import reportWebVitals from './reportWebVitals';

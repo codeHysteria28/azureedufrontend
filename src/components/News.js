@@ -37,6 +37,7 @@ const News = () => {
             <Container>
                 <div className="content-row">
                     {
+                        news.length < 1 ? <Col sm className="standard-col news text-center"><p className="font-weight-bold">No news yet ...</p></Col> :
                         news.map((item, index) => {
                             if(item.approved === true){
                                 return (
