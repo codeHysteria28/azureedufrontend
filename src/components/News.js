@@ -1,6 +1,4 @@
 import React, {useEffect, useState} from "react";
-import './styles/sitebodycollection.css';
-import Row from "react-bootstrap/Row";
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import axios from "axios";
@@ -9,27 +7,30 @@ import Button from 'react-bootstrap/Button';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 import moment from "moment";
+import { ThreeCircles } from  'react-loader-spinner';
 
+import './styles/sitebodycollection.css';
 import './styles/news.css';
 
 const News = () => {
     const [news, setNews] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     const now = moment().format("MMM Do YY");
 
-    const getNews = () => {
+    useEffect(() => {
+        setIsLoading(true);
         axios({
             method: 'get',
-            url: 'https://azureedube1.azurewebsites.net/getNews',
+            url: 'http://localhost:80/getNews',
             withCredentials: true
         }).then(res => {
             setNews(res.data);
-        });
-    }
-
-    useEffect(() => {
-        getNews();
+        })
+        .finally(() => setIsLoading(false));
     }, []);
+
+    if (isLoading) return <ThreeCircles height="100" width="100" color="#4fa94d" wrapperStyle={{}} wrapperClass="spinner" visible={isLoading} ariaLabel="three-circles-rotating" outerCircleColor="#0078d4" innerCircleColor="#0078d4" middleCircleColor="#005a9e"/>
 
     return (
         <div className="mb-5">
@@ -37,7 +38,6 @@ const News = () => {
             <Container>
                 <div className="content-row">
                     {
-                        news.length < 1 ? <Col sm className="standard-col news text-center"><p className="font-weight-bold">No news yet ...</p></Col> :
                         news.map((item, index) => {
                             if(item.approved === true){
                                 return (

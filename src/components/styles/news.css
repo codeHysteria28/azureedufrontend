@@ -60,3 +60,15 @@ a.go-back-btn:hover {
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+.dislike-icon {
+    margin-left: 5px;
+}
+
+.dislike-icon:hover {
+    cursor: pointer;
+}
+
+.like-icon:hover {
+    cursor: pointer;
+}
