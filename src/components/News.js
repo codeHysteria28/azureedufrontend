@@ -22,7 +22,7 @@ const News = () => {
         setIsLoading(true);
         axios({
             method: 'get',
-            url: 'http://localhost:80/getNews',
+            url: 'https://azureedube1.azurewebsites.net/getNews',
             withCredentials: true
         }).then(res => {
             setNews(res.data);
