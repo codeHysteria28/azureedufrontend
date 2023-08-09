@@ -6,6 +6,8 @@ import Container from 'react-bootstrap/Container';
 import parse from 'html-react-parser';
 import { BsArrowBarLeft } from "react-icons/bs";
 import { ThreeCircles } from  'react-loader-spinner'
+import readingTime from 'reading-time';
+import { BiTimer } from "react-icons/bi";
 // import LikeDislike from './ArticleEssentials/LikeDislike';
 import './styles/news.css';
 import './styles/sitebodycollection.css';
@@ -13,6 +15,7 @@ import './styles/sitebodycollection.css';
 const SingleArticle = () => {
     const [article, setArticle] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [readingtime, setReadingTime] = useState(0);
     // const [likes, setLike] = useState(0);
     // const [dislikes, setDislike] = useState(0);
     // const [loggedIn, setLoggedIn] = useState(false);
@@ -40,6 +43,7 @@ const SingleArticle = () => {
             params: { title }
         }).then(res => {
             setArticle(res.data);
+            setReadingTime(Math.round(readingTime(res.data.content).minutes));
         }).finally(() => setIsLoading(false));
     }, []);
 
@@ -48,10 +52,11 @@ const SingleArticle = () => {
     return (
         <div>
             <Container>
-                <Col sm className="standard-col mt-5 mb-5">
+                <Col sm md={9} className="standard-col mt-5 mb-5">
                     <div className="news-card">
                         <a className='go-back-btn' onClick={() => navigate(-1)}><BsArrowBarLeft/> Go back</a>
                         <h3 className="news-card-heading mt-3"> {article.title}</h3>
+                        <p><BiTimer size={20}/> <small className="fw-bold">{readingtime} min</small></p>
                         {parse(article.content || "")}
                         {/* <LikeDislike title={title} likesLoad={likes} isLoggedIn={loggedIn}/> */}
                         <small>{article.author} / {article.topic}</small>

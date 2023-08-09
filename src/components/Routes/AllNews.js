@@ -7,6 +7,8 @@ import axios from "axios";
 import moment from "moment";
 import { Link } from "react-router-dom";
 import { ThreeCircles } from  'react-loader-spinner'
+import readingTime from "reading-time";
+import { BiTimer } from "react-icons/bi";
 import "../styles/news.css";
 import '../styles/sitebodycollection.css';
 
@@ -20,10 +22,19 @@ const News = () => {
         setIsLoading(true);
         axios({
             method: 'get',
-            url: 'https://azureedube1.azurewebsites.net/getNewsAdmin',
+            url: 'http://localhost:80/getNewsAdmin', // https://azureedube1.azurewebsites.net/getNewsAdmin
             withCredentials: true
         }).then(res => {
-            setAllNews(res.data);
+            let news = res.data;
+
+            let newsWithReadingTime = news.map((item,index) => {
+                let itemContent = item.content;
+                let itemReadingTime = Math.round(readingTime(itemContent).minutes);
+                item.readingTime = itemReadingTime;
+                return item;
+            });
+
+            setAllNews(newsWithReadingTime);
         })
         .finally(() => setIsLoading(false));
     }, []);
@@ -66,6 +77,7 @@ const News = () => {
                                                 <small className="oldBadge">OLDER</small>
                                             </OverlayTrigger> 
                                         }
+                                        <p><BiTimer size={20}/><small className="fw-bold">{item.readingTime} min</small></p>
                                         <Link to={`/article/${item.title}`} className="content-link-single-article">Read More</Link>
                                     </div>
                                 </Col>

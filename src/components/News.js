@@ -8,6 +8,8 @@ import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 import moment from "moment";
 import { ThreeCircles } from  'react-loader-spinner';
+import readingTime from "reading-time";
+import { BiTimer } from "react-icons/bi";
 
 import './styles/sitebodycollection.css';
 import './styles/news.css';
@@ -22,10 +24,19 @@ const News = () => {
         setIsLoading(true);
         axios({
             method: 'get',
-            url: 'https://azureedube1.azurewebsites.net/getNews',
+            url: 'http://localhost:80/getNews', // https://azureedube1.azurewebsites.net/getNews
             withCredentials: true
         }).then(res => {
-            setNews(res.data);
+            let news = res.data;
+            
+            let newsWithReadingTime = news.map((item,index) => {
+                let itemContent = item.content;
+                let itemReadingTime = Math.round(readingTime(itemContent).minutes);
+                item.readingTime = itemReadingTime;
+                return item;
+            });
+
+            setNews(newsWithReadingTime);
         })
         .finally(() => setIsLoading(false));
     }, []);
@@ -45,7 +56,7 @@ const News = () => {
                                         <h3 className="news-card-heading">{item.title}</h3>
                                         <p>{item.description}</p>
                                         <div className="article-item-details">
-                                            <small>{item.author} / {item.topic} / </small> 
+                                            <small>{item.author} / {item.topic} / </small>
                                             {
                                                 now === moment(item.createdAt).format("MMM Do YY") ? 
                                                 <OverlayTrigger key="right" placement="right"
@@ -67,6 +78,7 @@ const News = () => {
                                                     <small className="oldBadge">OLDER</small>
                                                 </OverlayTrigger> 
                                             }
+                                            <p><BiTimer size={20}/><small className="fw-bold">{item.readingTime} min</small></p>
                                             <Link to={`/article/${item.title}`} className="content-link-single-article">Read More</Link>
                                         </div>
                                     </Col>

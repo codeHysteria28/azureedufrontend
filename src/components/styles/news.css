@@ -17,6 +17,9 @@ p img {
 a.go-back-btn {
     color: #0A95FF;
     text-decoration: none !important;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
 }
 
 a.go-back-btn:hover {
