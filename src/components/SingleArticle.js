@@ -8,7 +8,8 @@ import { BsArrowBarLeft } from "react-icons/bs";
 import { ThreeCircles } from  'react-loader-spinner'
 import readingTime from 'reading-time';
 import { BiTimer } from "react-icons/bi";
-// import LikeDislike from './ArticleEssentials/LikeDislike';
+import { FaAssistiveListeningSystems } from 'react-icons/fa';
+import ReactAudioPlayer from 'react-audio-player';
 import './styles/news.css';
 import './styles/sitebodycollection.css';
 
@@ -16,26 +17,11 @@ const SingleArticle = () => {
     const [article, setArticle] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [readingtime, setReadingTime] = useState(0);
-    // const [likes, setLike] = useState(0);
-    // const [dislikes, setDislike] = useState(0);
-    // const [loggedIn, setLoggedIn] = useState(false);
     const { title } = useParams();
     const navigate = useNavigate();
 
-    // const getLikesAndDislikes = () => {
-    //     axios({
-    //         method: 'get',
-    //         url: `http://localhost:80/getLikesDislikes/${title}`,
-    //         withCredentials: true
-    //     }).then(res => {
-    //         setLike(res.data.likes);
-    //         setDislike(res.data.dislikes);
-    //     });
-    // }
-
     useEffect(() => {
         setIsLoading(true);
-        // getLikesAndDislikes();
         axios({
             method: 'get',
             url: `https://azureedube1.azurewebsites.net/getArticle/${title}`,
@@ -56,9 +42,14 @@ const SingleArticle = () => {
                     <div className="news-card">
                         <a className='go-back-btn' onClick={() => navigate(-1)}><BsArrowBarLeft/> Go back</a>
                         <h3 className="news-card-heading mt-3"> {article.title}</h3>
-                        <p><BiTimer size={20}/> <small className="fw-bold">{readingtime} min</small></p>
+                        <p className='mt-2'><FaAssistiveListeningSystems size={20}/> <small className="fw-bold">Listen to this article:</small></p>
+                        <ReactAudioPlayer
+                            src={article.textToSpeechAudioUrl}
+                            controls
+                            className='mb-3 mt-1'
+                        />
+                        <p><BiTimer size={20}/> <small className="fw-bold">Estimate reading time: {readingtime} min:</small></p>
                         {parse(article.content || "")}
-                        {/* <LikeDislike title={title} likesLoad={likes} isLoggedIn={loggedIn}/> */}
                         <small>{article.author} / {article.topic}</small>
                     </div>
                 </Col>

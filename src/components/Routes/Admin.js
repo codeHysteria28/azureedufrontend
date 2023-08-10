@@ -119,7 +119,6 @@ const Admin = () => {
             if(res.data === 'article uploaded'){
                 setValue('');
                 alert('article uploaded');
-                // console.log(res.data);
             }
         });
     }
