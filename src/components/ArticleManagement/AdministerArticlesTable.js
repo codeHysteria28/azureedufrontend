@@ -13,19 +13,28 @@ const AdministerArticlesTable = () => {
     const getNews = () => {
         axios({
             method: 'get',
-            url: 'https://azureedube1.azurewebsites.net/getNewsAdmin',
+            url: 'https://azureedube1.azurewebsites.net/getNewsAdmin', 
             withCredentials: true
         }).then(res => {
             setNews(res.data);
         });
     }
 
-    const editArticle = articleTitle => {
-        console.log(`Editing ${articleTitle}`);
+    const editArticle = articleID => {
+        console.log(`Editing ${articleID}`);
     }
 
-    const deleteArticle = articleTitle => {
-        console.log(`Deleting ${articleTitle}`);
+    const deleteArticle = articleID => {
+        axios({
+            method: 'post',
+            url: 'https://azureedube1.azurewebsites.net/deleteArticle',
+            data: {articleID},
+            withCredentials: true
+        }).then(res => {
+            if(res.data === "article deleted"){
+                getNews();
+            }
+        });
     }
 
     const approveArticle = articleTitle => {
@@ -51,6 +60,7 @@ const AdministerArticlesTable = () => {
             <Table striped bordered hover className='text-center'>
                 <thead>
                     <tr>
+                        <th>ID</th>
                         <th>Title</th>
                         <th>Author</th>
                         <th>Created At</th>
@@ -64,11 +74,12 @@ const AdministerArticlesTable = () => {
                         news.map((item, index) => {
                             return (
                                 <tr key={index}>
+                                    <td>{item.id}</td>
                                     <td>{item.title}</td>
                                     <td>{item.author}</td>
                                     <td>{moment(item.createdAt).format('MMM Do YY')}</td>
                                     <td>{ item.approved === true ? <FcCheckmark/> : <FcCancel/>}</td>
-                                    <td><BsPencil className='edit-article' onClick={() => editArticle(item.title)}/> | <BsTrash3 className='delete-article' onClick={() => deleteArticle(item.title)}/></td>
+                                    <td><BsPencil className='edit-article' onClick={() => editArticle(item.id)}/> | <BsTrash3 className='delete-article' onClick={() => deleteArticle(item.id)}/></td>
                                     <td><FcCheckmark className='approve-article' onClick={() => approveArticle(item.title)}/></td>
                                 </tr>
                             );
