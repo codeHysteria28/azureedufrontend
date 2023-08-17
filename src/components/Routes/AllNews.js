@@ -22,7 +22,7 @@ const News = () => {
         setIsLoading(true);
         axios({
             method: 'get',
-            url: 'https://azureedube1.azurewebsites.net/getNewsAdmin', // https://azureedube1.azurewebsites.net/getNewsAdmin
+            url: 'https://azureedube1.azurewebsites.net/getNewsAdmin',
             withCredentials: true
         }).then(res => {
             let news = res.data;
@@ -44,7 +44,7 @@ const News = () => {
     return (
         <>
         <Container className="mt-5 mb-5">
-            <h2 className="content-h2-heading">All News</h2>
+            <h2 className="content-h2-heading">All Articles</h2>
             <div className="content-row">
                 {
                     allNews.length < 1 ? <Col sm className="standard-col news text-center"><p className="font-weight-bold">No news yet ...</p></Col> :

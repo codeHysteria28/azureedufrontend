@@ -45,7 +45,7 @@ const News = () => {
 
     return (
         <div className="mb-5">
-            <h2 className="content-h2-heading">Latest News</h2>
+            <h2 className="content-h2-heading">Latest Articles</h2>
             <Container>
                 <div className="content-row">
                     {
@@ -90,7 +90,7 @@ const News = () => {
                     }
                 </div>
                 <Link to="/news" className="content-link">
-                    <Button variant="primary" className="content-btn mt-5">View all news</Button>
+                    <Button variant="primary" className="content-btn mt-5">View all articles</Button>
                 </Link>
             </Container>
         </div>
