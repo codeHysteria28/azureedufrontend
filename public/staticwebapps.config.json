@@ -35,6 +35,24 @@
       "headers": {
           "Cache-Control": "no-store"
       }
+    },
+    {
+      "route": "/article*",
+      "headers": {
+          "Cache-Control": "must-revalidate, max-age=43200"
+      }
+    },
+    {
+      "route": "/",
+      "headers": {
+          "Cache-Control": "must-revalidate, max-age=43200"
+      }
+    },
+    {
+      "route": "/news",
+      "headers": {
+          "Cache-Control": "must-revalidate, max-age=43200"
+      }
     }
   ],
   "navigationFallback": {

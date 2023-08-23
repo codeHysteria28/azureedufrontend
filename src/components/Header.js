@@ -18,7 +18,7 @@ const Header = () => {
                         <Nav>
                             <Link className="nav-link" to="/"><BsFillHouseDoorFill/> Home</Link>
                             <Link className="nav-link" to="/news"><BsFillSignpostSplitFill/> Articles</Link>
-                            <Link className="nav-link" to="/signin"><BsFillPersonFill/> Login</Link>
+                            {/* <Link className="nav-link" to="/signin"><BsFillPersonFill/> Login</Link> */}
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

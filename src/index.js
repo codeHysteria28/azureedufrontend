@@ -24,8 +24,8 @@ export default function Index() {
             <Route path="/news" element={<AllNews />} />
             <Route path="/article/:title" element={<SingleArticle />}/>
             {/* <Route path="/sessions" element={<Sessions />} /> */}
-            <Route path="/signin" element={<SignIn />} />
-            <Route path="/signup" element={<SignUp />} />
+            {/* <Route path="/signin" element={<SignIn />} />
+            <Route path="/signup" element={<SignUp />} /> */}
           </Route>
           <Route path="/admin" element={<Admin />} />
           <Route path="/adminlogin" element={<AdminLogin />} />

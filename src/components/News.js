@@ -50,42 +50,38 @@ const News = () => {
                 <div className="content-row">
                     {
                         news.map((item, index) => {
-                            if(item.approved === true){
-                                return (
-                                    <Col sm className="standard-col news" key={index}>
-                                        <h3 className="news-card-heading">{item.title}</h3>
-                                        <p>{item.description}</p>
-                                        <div className="article-item-details">
-                                            <small>{item.author} / {item.topic} / </small>
-                                            {
-                                                now === moment(item.createdAt).format("MMM Do YY") ? 
-                                                <OverlayTrigger key="right" placement="right"
-                                                overlay={
-                                                    <Tooltip className="tooltip-new-badge">
-                                                        {moment(item.createdAt).format("MMM Do YY")}
-                                                    </Tooltip>
-                                                }
-                                                >
-                                                    <small className="newBadge">NEW</small>
-                                                </OverlayTrigger> :
-                                                <OverlayTrigger key="right" placement="right"
-                                                overlay={
-                                                    <Tooltip className="tooltip-old-badge">
-                                                        {moment(item.createdAt).format("MMM Do YY")}
-                                                    </Tooltip>
-                                                }
-                                                >
-                                                    <small className="oldBadge">OLDER</small>
-                                                </OverlayTrigger> 
+                            return (
+                                <Col sm className="standard-col news" key={index}>
+                                    <h3 className="news-card-heading">{item.title}</h3>
+                                    <p>{item.description}</p>
+                                    <div className="article-item-details">
+                                        <small>{item.author} / {item.topic} / </small>
+                                        {
+                                            now === moment(item.createdAt).format("MMM Do YY") ? 
+                                            <OverlayTrigger key="right" placement="right"
+                                            overlay={
+                                                <Tooltip className="tooltip-new-badge">
+                                                    {moment(item.createdAt).format("MMM Do YY")}
+                                                </Tooltip>
                                             }
-                                            <p><BiTimer size={20}/><small className="fw-bold">{item.readingTime} min</small></p>
-                                            <Link to={`/article/${item.title}`} className="content-link-single-article">Read More</Link>
-                                        </div>
-                                    </Col>
-                                );
-                            }else {
-                                return
-                            }
+                                            >
+                                                <small className="newBadge">NEW</small>
+                                            </OverlayTrigger> :
+                                            <OverlayTrigger key="right" placement="right"
+                                            overlay={
+                                                <Tooltip className="tooltip-old-badge">
+                                                    {moment(item.createdAt).format("MMM Do YY")}
+                                                </Tooltip>
+                                            }
+                                            >
+                                                <small className="oldBadge">OLDER</small>
+                                            </OverlayTrigger> 
+                                        }
+                                        <p><BiTimer size={20}/><small className="fw-bold">{item.readingTime} min</small></p>
+                                        <Link to={`/article/${item.title}`} className="content-link-single-article">Read More</Link>
+                                    </div>
+                                </Col>
+                            );
                         })
                     }
                 </div>
