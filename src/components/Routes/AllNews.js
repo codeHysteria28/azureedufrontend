@@ -78,7 +78,7 @@ const News = () => {
                                             </OverlayTrigger> 
                                         }
                                         <p><BiTimer size={20}/><small className="fw-bold">{item.readingTime} min</small></p>
-                                        <Link to={`/article/${item.title}`} className="content-link-single-article">Read More</Link>
+                                        <Link to={`/article/${item.slug}`} className="content-link-single-article">Read More</Link>
                                     </div>
                                 </Col>
                             );
