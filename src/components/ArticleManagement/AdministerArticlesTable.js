@@ -13,7 +13,7 @@ const AdministerArticlesTable = () => {
     const getNews = () => {
         axios({
             method: 'get',
-            url: 'https://azureedube1.azurewebsites.net/getNewsAdmin', 
+            url: 'https://azureedube1.azurewebsites.net/getNewsAdminAll', 
             withCredentials: true
         }).then(res => {
             setNews(res.data);
