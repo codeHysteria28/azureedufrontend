@@ -75,3 +75,28 @@ a.go-back-btn:hover {
 .like-icon:hover {
     cursor: pointer;
 }
+
+.comingUpCard {
+    border: 1px solid #77c4ff;
+    border-radius: 10px;
+    transition: all .5s ease;
+    padding: 1rem;
+}
+
+.comingUpCard:hover {
+    border: 1px solid #0A95FF;
+    border-radius: 20px;
+    transition: all .5s ease;
+}
+
+.comingUpHeading {
+    font-size: 18px;
+}
+
+.comingUpCard p {
+    font-size: 14px;
+}
+
+.comingUpCard small {
+    color: #0A95FF;
+}

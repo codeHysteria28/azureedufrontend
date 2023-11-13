@@ -15,6 +15,7 @@ import { IoIosLogOut } from "react-icons/io";
 import Accordion from 'react-bootstrap/Accordion';
 import ReactQuill from 'react-quill';
 import AdministerArticlesTable from "../ArticleManagement/AdministerArticlesTable";
+import ComingUpManagement from "../ArticleManagement/ComingUpManagement";
 
 import 'react-quill/dist/quill.snow.css';
 import '../styles/admin.css'
@@ -171,6 +172,12 @@ const Admin = () => {
                             <Accordion.Header>Approve Articles</Accordion.Header>
                             <Accordion.Body>
                                 <AdministerArticlesTable uploaded={uploaded}/>
+                            </Accordion.Body>
+                        </Accordion.Item>
+                        <Accordion.Item eventKey="2">
+                            <Accordion.Header>Coming up - upload</Accordion.Header>
+                            <Accordion.Body>
+                                <ComingUpManagement/>
                             </Accordion.Body>
                         </Accordion.Item>
                     </Accordion>
