@@ -100,3 +100,8 @@ a.go-back-btn:hover {
 .comingUpCard small {
     color: #0A95FF;
 }
+
+.video-title {
+    color: #0A95FF;
+    font-size: 18px;
+}

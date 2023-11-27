@@ -3,7 +3,7 @@ import './styles/header.css'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { BsFillPersonFill, BsFillHouseDoorFill, BsFillSignpostSplitFill } from "react-icons/bs";
+import { BsFillPersonFill, BsFillHouseDoorFill, BsFillSignpostSplitFill, BsCameraVideoFill } from "react-icons/bs";
 import { VscAzure } from "react-icons/vsc";
 import { Outlet, Link } from "react-router-dom";
 
@@ -18,6 +18,7 @@ const Header = () => {
                         <Nav>
                             <Link className="nav-link" to="/"><BsFillHouseDoorFill/> Home</Link>
                             <Link className="nav-link" to="/news"><BsFillSignpostSplitFill/> Articles</Link>
+                            <Link className="nav-link" to="/videos"><BsCameraVideoFill /> Videos</Link>
                             {/* <Link className="nav-link" to="/signin"><BsFillPersonFill/> Login</Link> */}
                         </Nav>
                     </Navbar.Collapse>

@@ -27,7 +27,7 @@
     "stream": "^0.0.2",
     "util": "^0.12.5",
     "web-vitals": "^2.1.4",
-    "webpack": "^5.88.2"
+    "webpack": "^5.89.0"
   },
   "scripts": {
     "start": "react-scripts start",

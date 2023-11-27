@@ -25,7 +25,7 @@ const Participate = () => {
             message: message
         }
 
-        axios.post("https://prod-09.northeurope.logic.azure.com:443/workflows/9e6c3acb3e844b1a8015512dcb447f3e/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=y8gD97GWm6pfk1QgJiUK1Yy1J8JdKAuGoC0z9wbObPE", data)
+        axios.post(process.env.REACT_APP_logicAppUrl, data)
         .then((res) => {
             setShowAlert(true);
         
