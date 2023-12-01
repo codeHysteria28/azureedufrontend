@@ -11,7 +11,7 @@ import readingTime from "reading-time";
 import { BiTimer } from "react-icons/bi";
 import "../styles/news.css";
 import '../styles/sitebodycollection.css';
-import { appInsights } from "../../ApplicationInsightsService";
+// import { appInsights } from "../../ApplicationInsightsService";
 
 const News = () => {
     const [allNews, setAllNews] = useState([]);
@@ -21,7 +21,7 @@ const News = () => {
 
     useEffect(() => {
         setIsLoading(true);
-        appInsights.trackPageView({name: "News"});
+        // appInsights.trackPageView({name: "News"});
 
         axios({
             method: 'get',

@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import Container from 'react-bootstrap/Container';
 import axios from "axios";
 import { ThreeCircles } from  'react-loader-spinner'
-import { appInsights } from "../../ApplicationInsightsService";
+// import { appInsights } from "../../ApplicationInsightsService";
 
 const Videos = () => {
     const [videos, setVideos] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
-        appInsights.trackPageView({name: "Videos"});
+        // appInsights.trackPageView({name: "Videos"});
         setIsLoading(true);
         try{
             axios({

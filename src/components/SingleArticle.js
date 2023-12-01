@@ -12,7 +12,7 @@ import { FaAssistiveListeningSystems } from 'react-icons/fa';
 import ReactAudioPlayer from 'react-audio-player';
 import './styles/news.css';
 import './styles/sitebodycollection.css';
-import { appInsights } from '../ApplicationInsightsService';
+// import { appInsights } from '../ApplicationInsightsService';
 
 const SingleArticle = () => {
     const [article, setArticle] = useState([]);
@@ -23,7 +23,7 @@ const SingleArticle = () => {
 
     useEffect(() => {
         setIsLoading(true);
-        appInsights.trackPageView({ name: title });
+        // appInsights.trackPageView({ name: title });
         axios({
             method: 'get',
             url: `https://azureedube1.azurewebsites.net/getArticle/${title}`,

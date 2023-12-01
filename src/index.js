@@ -12,13 +12,13 @@ import Videos from './components/Routes/Videos';
 import reportWebVitals from './reportWebVitals';
 import SingleArticle from './components/SingleArticle';
 import Creator from './components/Routes/Creator';
-import { ApplicationInsights } from "@microsoft/applicationinsights-web";
-
-const appInsights = new ApplicationInsights(
-    { config: {
-      connectionString: process.env.REACT_APP_APPINSIGHTS_CONNECTIONSTRING
-    }
-});
+// import { ApplicationInsights } from "@microsoft/applicationinsights-web";
+//
+// const appInsights = new ApplicationInsights(
+//     { config: {
+//       connectionString: process.env.REACT_APP_APPINSIGHTS_CONNECTIONSTRING
+//     }
+// });
 
 export default function Index() {
   return(
@@ -46,7 +46,7 @@ root.render(
   </React.StrictMode>
 );
 
-appInsights.loadAppInsights();
+// appInsights.loadAppInsights();
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
