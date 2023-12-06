@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Col } from "react-bootstrap";
 import axios from "axios";
 import moment from "moment";
 
@@ -20,24 +20,26 @@ const ComingUp = () => {
     }, []);
 
     return (
-        <div className="mb-5">
-            <h2 className="content-h2-heading">Coming up</h2>
-            <Container>
-                <div className="content-row row">
-                    {
-                        comingUp.map((item, index) => {
-                            return (
-                                <Col className="comingUpCard m-2" xs={12} sm={12} md key={index}>
-                                    <h3 className="comingUpHeading">{item.title}</h3>
-                                    <p>{item.description}</p>
-                                    <small>{moment(item.date).format("MMM Do YY")}</small>
-                                </Col>
-                            );
-                        })
-                    }
-                </div>
-            </Container>
-        </div>
+        comingUp.length > 0 ? (
+            <div className="mb-5">
+                <h2 className="content-h2-heading">Coming up</h2>
+                <Container>
+                    <div className="content-row row">
+                        {
+                            comingUp.map((item, index) => {
+                                return (
+                                    <Col className="comingUpCard m-2" xs={12} sm={12} md key={index}>
+                                        <h3 className="comingUpHeading">{item.title}</h3>
+                                        <p>{item.description}</p>
+                                        <small>{moment(item.date).format("MMM Do YY")}</small>
+                                    </Col>
+                                );
+                            })
+                        }
+                    </div>
+                </Container>
+            </div>
+        ) : null
     );
 }
 
