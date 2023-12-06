@@ -30,6 +30,10 @@ jobs:
           app_location: "/" # App source code path
           api_location: "" # Api source code path - optional
           output_location: "build" # Built app content directory - optional
+        env:
+          REACT_APP_YOUTUBE_API_KEY: ${{ secrets.REACT_APP_YOUTUBE_API_KEY }}
+          REACT_APP_YOUTUBE_CHANNEL_ID: ${{ secrets.REACT_APP_YOUTUBE_CHANNEL_ID }}
+          REACT_APP_logicAppUrl: ${{ secrets.REACT_APP_logicAppUrl }}
           ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
