@@ -106,3 +106,22 @@ h2.admin_heading {
 .delete-article:hover {
     color: darkred;
 }
+
+.aiMagicWand {
+    margin-left: 1rem;
+    font-size: 25px;
+    margin-top: 1rem;
+    transition: all .5s ease;
+}
+
+.aiMagicWand:hover {
+    cursor: pointer;
+    color: #0C63E4;
+    transition: all .5s ease;
+}
+
+small.ai-enhancement-small {
+    position: relative;
+    top: .5rem;
+    margin-left: 10px;
+}

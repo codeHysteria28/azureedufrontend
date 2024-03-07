@@ -12,6 +12,9 @@ import { FaAssistiveListeningSystems } from 'react-icons/fa';
 import ReactAudioPlayer from 'react-audio-player';
 import './styles/news.css';
 import './styles/sitebodycollection.css';
+import ModalImage from 'react-modal-image';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 // import { appInsights } from '../ApplicationInsightsService';
 
 const SingleArticle = () => {
@@ -31,9 +34,40 @@ const SingleArticle = () => {
             params: { title }
         }).then(res => {
             setArticle(res.data);
+            console.log(article);
             setReadingTime(Math.round(readingTime(res.data.content).minutes));
         }).finally(() => setIsLoading(false));
     }, []);
+
+    // define options for react parser
+    const options = {
+        replace: ({attribs, children, name}) => {
+            if(!attribs) return;
+
+            // replace <img/> tags with ModalImage
+            if(name === "img" && attribs.src){
+                return (
+                    <ModalImage
+                        small={attribs.src}
+                        large={attribs.src}
+                        alt={attribs.alt}
+                    />
+                );
+            }
+            
+            // replace <code> tags with SyntaxHighlighter
+            if(name === 'code'){
+                const codeString = children[0].data;
+                return (
+                    <SyntaxHighlighter language="javascript" style={dark}>
+                        {codeString}
+                    </SyntaxHighlighter>
+                );
+            }
+        }
+    }
+
+    const parsedContent = parse(article.content || "", options);
 
     if (isLoading) return <ThreeCircles height="100" width="100" color="#4fa94d" wrapperStyle={{}} wrapperClass="spinner" visible={isLoading} ariaLabel="three-circles-rotating" outerCircleColor="#0078d4" innerCircleColor="#0078d4" middleCircleColor="#005a9e"/>
 
@@ -51,7 +85,7 @@ const SingleArticle = () => {
                             className='mb-3 mt-1'
                         />
                         <p><BiTimer size={20}/> <small className="fw-bold">Estimate reading time: {readingtime} min:</small></p>
-                        {parse(article.content || "")}
+                        {parsedContent}
                         <small>{article.author} / {article.topic}</small>
                     </div>
                 </Col>

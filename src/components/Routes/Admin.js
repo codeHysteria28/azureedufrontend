@@ -12,6 +12,7 @@ import Col from 'react-bootstrap/Col';
 import { VscAzure } from "react-icons/vsc";
 import { useIdleTimer } from 'react-idle-timer'
 import { IoIosLogOut } from "react-icons/io";
+import { SlMagicWand } from "react-icons/sl";
 import Accordion from 'react-bootstrap/Accordion';
 import ReactQuill from 'react-quill';
 import AdministerArticlesTable from "../ArticleManagement/AdministerArticlesTable";
@@ -166,6 +167,7 @@ const Admin = () => {
                             <Accordion.Body>
                                 <ReactQuill className="editor" theme="snow" value={value} onChange={setValue} modules={modules}/>
                                 <Button className="mt-3" onClick={handleShow}>Upload</Button>
+                                <SlMagicWand className="aiMagicWand"/><small className="ai-enhancement-small"> - AI enhancement</small>
                             </Accordion.Body>
                         </Accordion.Item>
                         <Accordion.Item eventKey="1">
