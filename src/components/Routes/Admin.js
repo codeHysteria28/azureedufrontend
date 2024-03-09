@@ -148,10 +148,11 @@ const Admin = () => {
 
         axios({
             method: 'post',
-            url: 'https://openaienhancment.azurewebsites.net/api/enhanceText?code=ZrwDHq79N4v1WjnJp5Oa-4e_XZuH8wMKMy3OmJyhxsRpAzFuyhqekA==',
+            url: '/api/enhanceText',
             data: {aiMessage},
             headers: { 'Content-Type': 'application/json' }
         }).then(res => {
+            console.log(res.data);
             setMessages(prevMessages => [...prevMessages, { sender: 'ai', text: res.data }]);
         });
     }
