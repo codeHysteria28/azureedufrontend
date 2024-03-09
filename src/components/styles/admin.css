@@ -107,21 +107,133 @@ h2.admin_heading {
     color: darkred;
 }
 
+.aichat {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background-color: #00487c;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 25px;
+    right: 25px;
+}
+
+.adminAccordion {
+    width: 80%;
+}
+
 .aiMagicWand {
-    margin-left: 1rem;
-    font-size: 25px;
-    margin-top: 1rem;
+    color: white;
+    font-size: 20px;
     transition: all .5s ease;
 }
 
 .aiMagicWand:hover {
     cursor: pointer;
-    color: #0C63E4;
+    font-size: 25px;
     transition: all .5s ease;
 }
 
-small.ai-enhancement-small {
-    position: relative;
-    top: .5rem;
-    margin-left: 10px;
+.aiInterfaceVisible {
+    position: absolute;
+    right: 50px;
+    top: calc(75px + 45px);
+    width: 25%;
+    height: 480px;
+    background-color: #00487c;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.chat {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    overflow-y: auto;
+    max-height: 400px;
+}
+
+.chatMessage{
+    background-color: #1c78b9;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 5px;
+    max-width: 80%;
+    word-wrap: break-word;
+    align-self: flex-end;
+}
+
+.assistaneChatMessage {
+    background-color: #00487c;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 5px;
+    max-width: 80%;
+    word-wrap: break-word;
+    align-self: flex-start;
+}
+
+.messageAiIcon {
+    color: white;
+    margin-right: 10px;
+}
+
+.aiInterfaceHidden {
+    display: none;
+}
+
+.userPromtArea {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.userInput {
+    width: 80%;
+    height: 50px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+}
+
+.sendChat {
+    background-color: white;
+    height: 50px;
+    margin-top: 10px;
+    width: 80px;
+    border: none;
+}
+
+.sendChat:hover, .sendChat:focus {
+    background-color: white;
+}
+
+.sendChat:hover .sendIcon {
+    color: #5bb5f5;
+    font-size: 22px;
+    transition: all .3s ease;
+}
+
+.sendIcon {
+    color: #00487c;
+    font-size: 20px;
+    transition: all .3s ease;
+}
+
+/* media query for mobile devices */
+@media screen and (max-width: 768px) {
+    .adminAccordion {
+        width: 100%;
+    }
 }

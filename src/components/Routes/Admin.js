@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Container from 'react-bootstrap/Container';
@@ -12,7 +12,9 @@ import Col from 'react-bootstrap/Col';
 import { VscAzure } from "react-icons/vsc";
 import { useIdleTimer } from 'react-idle-timer'
 import { IoIosLogOut } from "react-icons/io";
-import { SlMagicWand } from "react-icons/sl";
+import { FaRobot } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
+import { IoSend } from "react-icons/io5";
 import Accordion from 'react-bootstrap/Accordion';
 import ReactQuill from 'react-quill';
 import AdministerArticlesTable from "../ArticleManagement/AdministerArticlesTable";
@@ -22,6 +24,7 @@ import 'react-quill/dist/quill.snow.css';
 import '../styles/admin.css'
 
 const Admin = () => {
+    const lastMessageRef = useRef();
     const [auth, setAuth] = useState(false);
     const [idle, setIdle] = useState(false); 
     const [username, setUsername] = useState("");
@@ -31,6 +34,9 @@ const Admin = () => {
     const [description, setDescription] = useState('');
     const [show, setShow] = useState(false);
     const [uploaded, setUploaded] = useState(false);
+    const [isAiInterfaceVisible, setAiInterfaceVisible] = useState("aiInterfaceHidden");
+    const [aiMessage, setAiMessage] = useState("");
+    const [messages, setMessages] = useState([]);
 
     const navigate = useNavigate();
 
@@ -136,9 +142,27 @@ const Admin = () => {
 
     const handleShow = () => setShow(true);
 
+    const sendMessage = () => {
+        setMessages(prevMessages => [...prevMessages, { sender: 'user', text: aiMessage }]);
+        setAiMessage("");
+
+        axios({
+            method: 'post',
+            url: 'https://openaienhancment.azurewebsites.net/api/enhanceText?code=ZrwDHq79N4v1WjnJp5Oa-4e_XZuH8wMKMy3OmJyhxsRpAzFuyhqekA==',
+            data: {aiMessage},
+            headers: { 'Content-Type': 'application/json' }
+        }).then(res => {
+            setMessages(prevMessages => [...prevMessages, { sender: 'ai', text: res.data }]);
+        });
+    }
+
     useEffect(() => {
         getUser();
-    }, []);
+
+        if(lastMessageRef.current){
+            lastMessageRef.current.scrollIntoView({ behaviour: 'smooth' });
+        }
+    }, [messages]);
 
     return (
         <>
@@ -161,13 +185,12 @@ const Admin = () => {
                 </Navbar>
 
                 <Container>
-                    <Accordion className="mt-5">
+                    <Accordion className="adminAccordion mt-5">
                         <Accordion.Item eventKey="0">
                             <Accordion.Header>Create new article</Accordion.Header>
                             <Accordion.Body>
                                 <ReactQuill className="editor" theme="snow" value={value} onChange={setValue} modules={modules}/>
                                 <Button className="mt-3" onClick={handleShow}>Upload</Button>
-                                <SlMagicWand className="aiMagicWand"/><small className="ai-enhancement-small"> - AI enhancement</small>
                             </Accordion.Body>
                         </Accordion.Item>
                         <Accordion.Item eventKey="1">
@@ -221,6 +244,32 @@ const Admin = () => {
                             </Button>
                         </Modal.Footer>
                     </Modal>
+                    <div className="aichat" onClick={() => setAiInterfaceVisible(prevState => prevState === "aiInterfaceVisible" ? "aiInterfaceHidden" : "aiInterfaceVisible")}>
+                        <FaRobot className="aiMagicWand"/>
+                    </div>
+
+                    <div className={isAiInterfaceVisible}>
+                        <div className="chat">
+                            <div className="assistaneChatMessage">
+                                <FaRobot className="messageAiIcon"/>
+                                Hello I'm your assistant. How can I help you today ?
+                            </div>
+                            {
+                                messages.map((message, index) => {
+                                    return (
+                                        <div key={index} ref={index === messages.length -1 ? lastMessageRef : null} className={message.sender === 'user' ? 'chatMessage' : 'assistaneChatMessage'}>
+                                            {message.sender === 'user' ? <FaUser className="messageAiIcon"/> : <FaRobot className="messageAiIcon"/>}
+                                            {message.text}
+                                        </div>
+                                    )
+                                })
+                            }
+                        </div>
+                        <div className="userPromtArea">
+                            <textarea className="userInput" value={aiMessage} placeholder="Type your message here..." onChange={e => setAiMessage(e.target.value)}></textarea>
+                            <Button className="primary sendChat" onClick={sendMessage}><IoSend className="sendIcon"/></Button>
+                        </div>
+                    </div>
                 </Container>
             </>
             : ""
