@@ -152,7 +152,6 @@ const Admin = () => {
             data: {aiMessage},
             headers: { 'Content-Type': 'application/json' }
         }).then(res => {
-            console.log(res.data);
             setMessages(prevMessages => [...prevMessages, { sender: 'ai', text: res.data }]);
         });
     }
