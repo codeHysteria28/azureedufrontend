@@ -148,7 +148,7 @@ const Admin = () => {
 
         axios({
             method: 'post',
-            url: '/api/enhanceText',
+            url: 'https://azureedube1.azurewebsites.net/aichat',
             data: {aiMessage},
             headers: { 'Content-Type': 'application/json' }
         }).then(res => {
