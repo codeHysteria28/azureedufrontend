@@ -4,8 +4,7 @@ import Container from 'react-bootstrap/Container';
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import Tooltip from 'react-bootstrap/Tooltip';
+import Badge from 'react-bootstrap/Badge';
 import moment from "moment";
 import { ThreeCircles } from  'react-loader-spinner';
 import readingTime from "reading-time";
@@ -53,10 +52,12 @@ const News = () => {
                             return (
                                 <Col sm className="standard-col news" key={index}>
                                     <h3 className="news-card-heading">{item.title}</h3>
+                                    <Badge className="mb-2">
+                                        {moment(item.createdAt).format("MMM Do YYYY")}
+                                    </Badge>
                                     <p>{item.description}</p>
                                     <div className="article-item-details">
-                                        <small>{item.author} / {item.topic} / </small>
-                                        {
+                                        {/* {
                                             now === moment(item.createdAt).format("MMM Do YY") ? 
                                             <OverlayTrigger key="right" placement="right"
                                             overlay={
@@ -76,7 +77,7 @@ const News = () => {
                                             >
                                                 <small className="oldBadge">OLDER</small>
                                             </OverlayTrigger> 
-                                        }
+                                        } */}
                                         <p><BiTimer size={20}/><small className="fw-bold">{item.readingTime} min</small></p>
                                         <Link to={`/article/${item.slug}`} className="content-link-single-article">Read More</Link>
                                     </div>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Container, Col } from "react-bootstrap";
 import axios from "axios";
 import moment from "moment";
-
+import Badge from 'react-bootstrap/Badge';
 import './styles/news.css';
 
 const ComingUp = () => {
@@ -31,7 +31,9 @@ const ComingUp = () => {
                                     <Col className="comingUpCard m-2" xs={12} sm={12} md key={index}>
                                         <h3 className="comingUpHeading">{item.title}</h3>
                                         <p>{item.description}</p>
-                                        <small>{moment(item.date).format("MMM Do YY")}</small>
+                                        <Badge className="mb-2">
+                                            {moment(item.date).format("MMM Do YYYY")}
+                                        </Badge>
                                     </Col>
                                 );
                             })

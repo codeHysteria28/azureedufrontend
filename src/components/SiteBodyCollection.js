@@ -15,7 +15,7 @@ const SiteBodyCollection = () => {
         <Container id="body-wrapper">
             <ComingUp/>
             <News/>
-            <Participate/>
+            {/* <Participate/> */}
         </Container>
     );
 };

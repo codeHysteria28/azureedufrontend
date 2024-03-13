@@ -84,7 +84,7 @@ const SingleArticle = () => {
                             controls
                             className='mb-3 mt-1'
                         />
-                        <p><BiTimer size={20}/> <small className="fw-bold">Estimate reading time: {readingtime} min:</small></p>
+                        <p><BiTimer size={20}/> <small className="fw-bold">Estimate reading time: {readingtime} min</small></p>
                         {parsedContent}
                         <small>{article.author} / {article.topic}</small>
                     </div>

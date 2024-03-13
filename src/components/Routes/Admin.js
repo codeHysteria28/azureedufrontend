@@ -266,7 +266,12 @@ const Admin = () => {
                             }
                         </div>
                         <div className="userPromtArea">
-                            <textarea className="userInput" value={aiMessage} placeholder="Type your message here..." onChange={e => setAiMessage(e.target.value)}></textarea>
+                            <textarea 
+                                className="userInput" 
+                                value={aiMessage} 
+                                placeholder="Type your message here..." 
+                                onChange={e => setAiMessage(e.target.value)} 
+                                onKeyDown={e => { if (e.key === "Enter" && aiMessage.trim() !== ""){ e.preventDefault(); sendMessage(); } }}></textarea>
                             <Button className="primary sendChat" onClick={sendMessage}><IoSend className="sendIcon"/></Button>
                         </div>
                     </div>
